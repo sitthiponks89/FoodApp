@@ -1,0 +1,80 @@
+[versions]
+agp = "8.12.3"
+kotlin = "2.0.21"
+coreKtx = "1.17.0"
+junit = "4.13.2"
+junitVersion = "1.3.0"
+espressoCore = "3.7.0"
+lifecycleRuntimeKtx = "2.9.4"
+activityCompose = "1.11.0"
+composeBom = "2024.09.00"
+
+coil = "2.7.0"
+lifecycle = "2.9.4"
+compose = "1.9.4"
+navigation = "2.9.5"
+gson = "2.13.2"
+constraintlayoutCompose = "1.1.1"
+#retrofit
+retrofit = "2.9.0"
+#moshi
+moshi = "1.14.0"
+#google
+googleServices = "4.3.13"
+#firebase
+firebaseBom = "31.1.1"
+firebaseDatabase = "20.0.4"
+firebaseDynamicLinks = "19.0.0"
+firebaseFirestoreKtx = "22.0.0"
+firebaseStorage = "20.0.1"
+firebaseCrashlyticsKtx = "18.6.2"
+#ui
+ui = "1.9.4"
+
+
+[libraries]
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+
+androidx-ui = { group = "androidx.compose.ui", name = "ui" }
+androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+
+runtime-livedata = { module  = "androidx.compose.runtime:runtime-livedata", version.ref = "compose" }
+constraintlayout-compose = { module  = "androidx.constraintlayout:constraintlayout-compose", version.ref = "constraintlayoutCompose" }
+compose-foundation = { module  = "androidx.compose.foundation:foundation", version.ref = "compose" }
+navigation-compose = { module  = "androidx.navigation:navigation-compose", version.ref = "navigation" }
+lifecycle-viewmodel-compose = { module  = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycle" }
+compose-material = { module  = "androidx.compose.material:material", version.ref = "compose" }
+#coil
+coil-compose = { module  = "io.coil-kt:coil-compose", version.ref = "coil" }
+#gson
+gson = { module  = "com.google.code.gson:gson", version.ref = "gson" }
+#moshi
+converter-moshi = { module = "com.squareup.retrofit2:converter-moshi", version.ref = "retrofit" }
+#firebase
+firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
+firebase-database = { module = "com.google.firebase:firebase-database", version.ref = "firebaseDatabase" }
+firebase-dynamic-links = { module = "com.google.firebase:firebase-dynamic-links", version.ref = "firebaseDynamicLinks" }
+firebase-firestore-ktx = { module = "com.google.firebase:firebase-firestore-ktx", version.ref = "firebaseFirestoreKtx" }
+firebase-analytics-ktx = { module = "com.google.firebase:firebase-analytics-ktx", version.ref = "firebaseStorage" }
+firebase-crashlytics-ktx = { module = "com.google.firebase:firebase-crashlytics-ktx", version.ref = "firebaseCrashlyticsKtx" }
+firebase-storage = { module = "com.google.firebase:firebase-storage", version.ref = "firebaseStorage" }
+#ui
+ui = { group = "androidx.compose.ui", name = "ui", version.ref = "ui" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+googleServices = {id = "com.google.gms.google-services", version.ref = "googleServices"}
+
