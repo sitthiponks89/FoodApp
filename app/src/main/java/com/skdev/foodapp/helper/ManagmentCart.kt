@@ -1,8 +1,7 @@
-package com.skdev.foodapp.Helper
+package com.skdev.foodapp.helper
 
 import android.content.Context
 import android.widget.Toast
-import com.skdev.foodapp.Helper.TinyDB
 import com.skdev.foodapp.domain.FoodModel
 import com.skdev.foodapp.Model.ChangeNumberItemsListener
 

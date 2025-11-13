@@ -1,4 +1,4 @@
-package com.skdev.foodapp.screens.detailfood
+package com.skdev.foodapp.view.detailfood
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -25,38 +25,44 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import com.skdev.foodapp.R
 import com.skdev.foodapp.domain.FoodModel
 
+// TODO: แสดงแถวชื่ออาหารพร้อมปุ่มเพิ่ม/ลดจำนวนสินค้า
 @Composable
 fun TitleNumberRow(
-    item: FoodModel,
-    numberInCart: Int,
-    onIncrement: () -> Unit,
-    onDecrement: () -> Unit,
-    modifier: Modifier = Modifier
+    item: FoodModel, // TODO: ข้อมูลอาหารที่จะแสดงชื่อ
+    numberInCart: Int, // TODO: จำนวนสินค้าที่อยู่ในตะกร้า
+    onIncrement: () -> Unit, // TODO: ฟังก์ชันเพิ่มจำนวนสินค้า
+    onDecrement: () -> Unit, // TODO: ฟังก์ชันลดจำนวนสินค้า
+    modifier: Modifier = Modifier // TODO: Modifier ภายนอกสำหรับปรับแต่ง
 ) {
+    // TODO: Row จัดเรียงชื่ออาหารและปุ่มเพิ่ม/ลดในแนวนอน
     Row(
         modifier = modifier
-            .fillMaxWidth()
-            .padding(16.dp)
+            .fillMaxWidth() // TODO: กว้างเต็มหน้าจอ
+            .padding(16.dp) // TODO: เว้นระยะรอบ ๆ
     ) {
+        // TODO: แสดงชื่ออาหาร
         Text(
             text = item.Title,
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
             maxLines = 1,
             color = Color.White,
-            modifier = Modifier.weight(1f)
+            modifier = Modifier.weight(1f) // TODO: ขยายเต็มพื้นที่ที่เหลือ
         )
 
+        // TODO: ConstraintLayout สำหรับปุ่ม + / - และแสดงจำนวน
         ConstraintLayout(
             modifier = Modifier
-                .width(100.dp)
+                .width(100.dp) // TODO: กำหนดความกว้างของกล่อง
                 .padding(start = 8.dp)
                 .background(
                     shape = RoundedCornerShape(8.dp),
-                    color = colorResource(R.color.black3)
+                    color = colorResource(R.color.black3) // TODO: พื้นหลังสีเข้ม
                 )
         ) {
             val (plusCartBtn, minusCartBtn, numberItemText) = createRefs()
+
+            // TODO: แสดงจำนวนสินค้า
             Text(
                 text = "$numberInCart",
                 color = Color.White,
@@ -72,13 +78,15 @@ fun TitleNumberRow(
                         end.linkTo(parent.end)
                     }
             )
+
+            // TODO: ปุ่มเพิ่มจำนวน (+)
             Box(
                 modifier = Modifier
                     .padding(2.dp)
                     .size(40.dp)
                     .background(
                         color = colorResource(R.color.green),
-                        shape = RoundedCornerShape(100.dp)
+                        shape = RoundedCornerShape(100.dp) // TODO: กลม
                     )
                     .constrainAs(plusCartBtn) {
                         top.linkTo(parent.top)
@@ -86,10 +94,9 @@ fun TitleNumberRow(
                         end.linkTo(parent.end)
                     }
                     .clickable {
-                        onIncrement()
+                        onIncrement() // TODO: เรียกเพิ่มจำนวน
                     }
-
-            ){
+            ) {
                 Text(
                     text = "+",
                     color = Color.Black,
@@ -97,29 +104,27 @@ fun TitleNumberRow(
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier.align(Alignment.Center),
                     textAlign = TextAlign.Center
-
                 )
             }
 
+            // TODO: ปุ่มลดจำนวน (-)
             Box(
                 modifier = Modifier
                     .padding(2.dp)
                     .size(40.dp)
                     .background(
                         color = colorResource(R.color.green),
-                        shape = RoundedCornerShape(100.dp)
+                        shape = RoundedCornerShape(100.dp) // TODO: กลม
                     )
                     .constrainAs(minusCartBtn) {
                         start.linkTo(parent.start)
                         top.linkTo(parent.top)
                         bottom.linkTo(parent.bottom)
-
                     }
                     .clickable {
-                        onIncrement()
+                        onDecrement() // TODO: เรียกลดจำนวน
                     }
-
-            ){
+            ) {
                 Text(
                     text = "-",
                     color = Color.Black,
@@ -127,14 +132,13 @@ fun TitleNumberRow(
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier.align(Alignment.Center),
                     textAlign = TextAlign.Center
-
                 )
             }
-
         }
     }
 }
 
+// TODO: Preview แสดง TitleNumberRow ด้วยตัวอย่าง FoodModel
 @Preview
 @Composable
 fun TitleNumberRowPreview() {
@@ -145,3 +149,4 @@ fun TitleNumberRowPreview() {
     )
     TitleNumberRow(item = item, numberInCart = 1, onIncrement = {}, onDecrement = {})
 }
+

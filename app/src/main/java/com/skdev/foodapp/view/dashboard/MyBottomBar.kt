@@ -1,4 +1,4 @@
-package com.skdev.foodapp.screens.dashboard
+package com.skdev.foodapp.view.dashboard
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.padding

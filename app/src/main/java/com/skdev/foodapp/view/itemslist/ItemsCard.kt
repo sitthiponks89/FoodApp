@@ -1,4 +1,4 @@
-package com.skdev.foodapp.screens.itemslist
+package com.skdev.foodapp.view.itemslist
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -32,24 +32,25 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.skdev.foodapp.R
 import com.skdev.foodapp.domain.FoodModel
-import java.nio.file.WatchEvent
 
+// TODO: แสดงรายการอาหารแบบ List (LazyColumn)
 @Composable
 fun ItemsList(
-    items: List<FoodModel>,
-    onItemClick: (FoodModel) -> Unit
+    items: List<FoodModel>, // TODO: รายการอาหาร
+    onItemClick: (FoodModel) -> Unit // TODO: Callback เมื่อกดแต่ละรายการ
 ) {
     LazyColumn(
         modifier = Modifier
-            .padding(horizontal = 16.dp, vertical = 16.dp)
+            .padding(horizontal = 16.dp, vertical = 16.dp) // TODO: เว้นระยะรอบ ๆ
     ){
-       itemsIndexed(items){_, item ->
-           Items(item = item, onItemClick = {onItemClick(item)})
-       }
+        // TODO: วนลูปแสดงแต่ละรายการด้วย Items()
+        itemsIndexed(items){ _, item ->
+            Items(item = item, onItemClick = { onItemClick(item) })
+        }
     }
 }
 
-
+// TODO: Preview ของ ItemsList
 @Preview
 @Composable
 fun ItemsListPreview(){
@@ -61,33 +62,35 @@ fun ItemsListPreview(){
     ItemsList(items = items, onItemClick = {})
 }
 
-
+// TODO: แสดงรายการอาหารแต่ละแถว (Row) พร้อมรูปและรายละเอียด
 @Composable
 fun Items(item: FoodModel, onItemClick: () -> Unit) {
     Row(
         modifier = Modifier
-            .padding(vertical = 8.dp)
-            .fillMaxWidth()
-            .background(color = colorResource(R.color.black3),
-                shape = RoundedCornerShape(10.dp))
-            .wrapContentHeight()
-            .clickable { onItemClick() }
-
+            .padding(vertical = 8.dp) // TODO: เว้นระยะบน/ล่าง
+            .fillMaxWidth() // TODO: กว้างเต็มหน้าจอ
+            .background(
+                color = colorResource(R.color.black3),
+                shape = RoundedCornerShape(10.dp)
+            ) // TODO: พื้นหลังสีเข้ม มุมโค้ง
+            .wrapContentHeight() // TODO: ความสูงปรับตามเนื้อหา
+            .clickable { onItemClick() } // TODO: คลิกเรียก callback
     ) {
-        FoodImage(item = item)
-        FoodDetail(item = item)
+        FoodImage(item = item) // TODO: แสดงรูปอาหาร
+        FoodDetail(item = item) // TODO: แสดงรายละเอียดอาหาร
     }
 }
 
-
+// TODO: แสดงรายละเอียดอาหาร (ชื่อ, เวลา, คะแนน, ราคา)
 @Composable
 fun RowScope.FoodDetail(item: FoodModel) {
     Column(
         modifier = Modifier
-            .padding(start = 8.dp)
+            .padding(start = 8.dp) // TODO: เว้นระยะซ้าย
             .fillMaxWidth()
-            .weight(1f)
+            .weight(1f) // TODO: ขยายเต็มพื้นที่ที่เหลือ
     ) {
+        // TODO: ชื่ออาหาร
         Text(
             text = item.Title,
             color = colorResource(R.color.white),
@@ -98,27 +101,28 @@ fun RowScope.FoodDetail(item: FoodModel) {
             modifier = Modifier.padding(top = 8.dp)
         )
 
-       TimingRow(item.TimeValue)
-       RatingBarRow(item.Star)
-       PriceRow(item.Price)
-
-
+        TimingRow(item.TimeValue) // TODO: แสดงเวลาที่ใช้
+        RatingBarRow(item.Star) // TODO: แสดงคะแนนดาว
+        PriceRow(item.Price) // TODO: แสดงราคาและปุ่มเพิ่ม
     }
 }
 
+// TODO: แถวแสดงราคาและปุ่ม "+ Add"
 @Composable
 fun PriceRow(price: Int) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier.padding(top = 8.dp, bottom = 8.dp, end = 8.dp)
-    ){
+    ) {
+        // TODO: แสดงราคา
         Text(
-            text = "$price min",
+            text = "$price min", // TODO: แสดงตัวเลขราคา
             color = Color.White,
             fontSize = 18.sp,
             fontWeight = FontWeight.SemiBold,
             modifier = Modifier.weight(1f)
         )
+        // TODO: ปุ่มเพิ่มสินค้า
         Text(
             text = "+ Add",
             color = Color.White,
@@ -130,29 +134,30 @@ fun PriceRow(price: Int) {
                 )
                 .padding(horizontal = 8.dp, vertical = 4.dp)
         )
-
     }
 }
 
+// TODO: แถวแสดงคะแนนดาว
 @Composable
 fun RatingBarRow(star: Double) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier.padding(top = 8.dp)
-    ){
+    ) {
         Image(
             painter = painterResource(R.drawable.star),
             contentDescription = null,
             modifier = Modifier.padding(end = 8.dp)
         )
         Text(
-            text = "$star min",
+            text = "$star min", // TODO: แสดงค่าคะแนนดาว
             color = Color.White,
             style = MaterialTheme.typography.bodyMedium
         )
     }
 }
 
+// TODO: แถวแสดงเวลาในการทำอาหาร
 @Composable
 fun TimingRow(timeValue: Int) {
     Row(
@@ -172,20 +177,20 @@ fun TimingRow(timeValue: Int) {
     }
 }
 
-
-
+// TODO: แสดงรูปอาหาร
 @Composable
 fun FoodImage(item: FoodModel) {
-   AsyncImage(
-       model =  item.ImagePath,
-       contentDescription = null,
-       modifier = Modifier
-           .size(125.dp)
-           .clip(RoundedCornerShape(10.dp))
-           .background(colorResource(R.color.white),
-               shape = RoundedCornerShape(10.dp)),
-       contentScale = ContentScale.Crop
-
-   )
-
+    AsyncImage(
+        model = item.ImagePath,
+        contentDescription = null,
+        modifier = Modifier
+            .size(125.dp)
+            .clip(RoundedCornerShape(10.dp))
+            .background(
+                color = colorResource(R.color.white),
+                shape = RoundedCornerShape(10.dp)
+            ),
+        contentScale = ContentScale.Crop
+    )
 }
+
