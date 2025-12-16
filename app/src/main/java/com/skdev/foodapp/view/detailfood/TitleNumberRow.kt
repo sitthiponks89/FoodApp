@@ -83,7 +83,7 @@ fun TitleNumberRow(
             Box(
                 modifier = Modifier
                     .padding(2.dp)
-                    .size(40.dp)
+                    .size(30.dp)
                     .background(
                         color = colorResource(R.color.green),
                         shape = RoundedCornerShape(100.dp) // TODO: กลม
@@ -111,7 +111,7 @@ fun TitleNumberRow(
             Box(
                 modifier = Modifier
                     .padding(2.dp)
-                    .size(40.dp)
+                    .size(30.dp)
                     .background(
                         color = colorResource(R.color.green),
                         shape = RoundedCornerShape(100.dp) // TODO: กลม
